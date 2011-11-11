@@ -99,7 +99,7 @@
     {
         NSLog(@"SERVERDAN OYUNA BASLA KOMUTU GELDI");
        
-        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"startTheGame" object:self];
         [mClient sendXtMessage:@"ballGame" cmd:@"started" paramObj:nil type:nil roomId:[mRoom getId]];
         
        
@@ -114,7 +114,7 @@
 {
     
     //[self->_viewController RoomVariableAction:[self->mRoom getVariables]];
-    
+   
     [mClient sendXtMessage:@"ballGame" cmd:@"ready" paramObj:nil type:nil roomId:[mRoom getId]];
     
 }

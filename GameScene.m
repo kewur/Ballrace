@@ -31,6 +31,7 @@
 	
 	if(self == [super init]) {
 		
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startTheGame) name:@"startTheGame" object:nil];
         // Grab an instance of our singleton classes
 		_sharedDirector = [Director sharedDirector];
         _sharedResourceManager = [ResourceManager sharedResourceManager];
@@ -267,10 +268,15 @@
 	
 	return self;
 }
+- (void)startTheGame
+{
 
+    readyCheck = 1;
+
+}
 - (void)updateAccelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
 {
-  // d  NSLog(@"ACCELER %f  ,  %f  ,  %f",acceleration.x,acceleration.y,acceleration.z);
+ 
   if (acceleration.y<-0.1)
     {
         xDifference = acceleration.y;

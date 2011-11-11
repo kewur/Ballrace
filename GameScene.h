@@ -72,5 +72,5 @@
 @property (nonatomic, assign)float readyCheck;
 
 - (void)updateAccelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration;
-
+- (void)startTheGame;
 @end

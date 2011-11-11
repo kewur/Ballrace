@@ -102,9 +102,9 @@
 - (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
 
 
-  //   NSLog(@"ACCELER %f  ,  %f  ,  %f",fabsf( acceleration.x),fabsf( acceleration.y),fabsf( acceleration.z));
+
     [[_director currentScene] updateAccelerometer:accelerometer didAccelerate:acceleration];
-     //  NSLog(@"ACCELER %f  ,  %f  ,  %f",acceleration.x,acceleration.y,acceleration.z);
+
 
 }
 
