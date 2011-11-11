@@ -17,7 +17,7 @@
     
     Director *_sharedDirector;
     float collideCube;
-    float cameraY;
+    float readyCheck;
     float cameraZ;
     
     float lookUpX;
@@ -38,7 +38,7 @@
 @property (nonatomic, readonly)RaceBall *raceBall;
 @property (nonatomic, assign)float oldPosition;
 @property (nonatomic, assign) float collideCube;
-@property (nonatomic, assign) float cameraY;
+@property (nonatomic, assign) float readyCheck;
 @property (nonatomic, assign) float cameraZ;
 @property (nonatomic, assign)float lookUpX;
 @property (nonatomic, assign)float lookUpY;

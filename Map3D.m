@@ -62,7 +62,7 @@
     glScalef(7, 2, 2);
    glColor4f(1, 1, 1, 1);
  //glColor4f(0.45f, 0.65f, 0.80f, 1.0f);
-    [texture bind];
+  //  [texture bind];
     
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_NORMAL_ARRAY);

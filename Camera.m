@@ -13,7 +13,7 @@
 @implementation Camera
 
 @synthesize collideCube;
-@synthesize cameraY;
+@synthesize readyCheck;
 @synthesize cameraZ;
 @synthesize lookUpX;
 @synthesize lookUpY;
@@ -69,49 +69,55 @@
     xDifference = [(GameScene*)[_sharedDirector currentScene]  xDifference];
     yDifference = [(GameScene*)[_sharedDirector currentScene]  yDifference];
     collideCube = [(GameScene*)[_sharedDirector currentScene]  collideCube];
-//    
+    readyCheck  = [(GameScene*)[_sharedDirector currentScene]  readyCheck];
 //    position.x -= xDifference*kMapAcceloremeter;
 //    position.z -= yDifference*kMapAcceloremeter;
 //    lookUpZ -= yDifference*kMapAcceloremeter;
 //    lookUpX -= xDifference*kMapAcceloremeter;
 //    
     //NSLog(@"%f",collideCube);
-    static float velocityOfBall = 0;
     
-    if (collideCube == 0)
+    if (readyCheck != 0)
     {
-       
-        velocityOfBall += 0.005;
+        static float velocityOfBall = 0;
         
-        if (velocityOfBall > MAX_Acceleration)
+        if (collideCube == 0)
         {
-            velocityOfBall = MAX_Acceleration;
-
-        }
-        position.z += velocityOfBall;
-        lookUpZ +=velocityOfBall;
-        
-    }
-    else
-    {
-        if (velocityOfBall-0.5<0)
-        {
-            velocityOfBall = 0 ;
+            
+            velocityOfBall += 0.005;
+            
+            if (velocityOfBall > MAX_Acceleration)
+            {
+                velocityOfBall = MAX_Acceleration;
+                
+            }
+            position.z += velocityOfBall;
+            lookUpZ +=velocityOfBall;
+            
         }
         else
         {
-           // NSLog(@"GIRDINMI");
-            velocityOfBall-=0.5;
+            //NSLog(@"VELOCITY %f",velocityOfBall);
+            if (velocityOfBall-0.5<0)
+            {
+                velocityOfBall = 0 ;
+            }
+            else
+            {
+                // NSLog(@"GIRDINMI");
+                velocityOfBall-=0.5;
+            }
+            
         }
         
-    }
-
-      ///  position.z += 0.1;
-      //  lookUpZ +=0.1;
+        ///  position.z += 0.1;
+        //  lookUpZ +=0.1;
         oldPosition = position.x;
         position.x += xDifference*1.5;
         lookUpX += xDifference*1.5;
         
+    }
+
        
    
   

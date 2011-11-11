@@ -26,6 +26,7 @@
 @synthesize mapList;
 @synthesize cubesCount;
 @synthesize collideCube;
+@synthesize readyCheck;
 - (id)init {
 	
 	if(self == [super init]) {
@@ -49,7 +50,7 @@
         cubes = [[NSMutableArray alloc] init];
         mapList = [[NSMutableArray alloc] init];
        self.cubesCount = [[NSString alloc] initWithString:@"0"];
-        
+        readyCheck = 0;
         collideCube = 0;
         [mapList addObject:cubesCount ];
         
@@ -436,13 +437,13 @@
 
 -(void)fakeTimer
 {
-
+   
     collideCube = 0;
 }
 
 -(void)collide
 {
-[NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(fakeTimer) userInfo:nil repeats:NO];
+[NSTimer scheduledTimerWithTimeInterval:0.01667 target:self selector:@selector(fakeTimer) userInfo:nil repeats:NO];
 
 
 }
@@ -520,25 +521,25 @@
                 {
                     collideCube = 1;
                     collisionCube = cube;
-                    
+                 
                     [self collide];
                     //[NSTimer scheduledTimerWithTimeInterval:0 target:self selector:@selector(fakeTimer) userInfo:nil repeats:YES];
                 }
                 else
                 {
-                   // collideCube = 0;
+                
                 }
            
                 
             }
         }
         
-         //collideCube = 0;
+        
 
         
         [[cubes objectAtIndex:x] render];
     }
-   // collideCube = 0;
+  
 
  
 }

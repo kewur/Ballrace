@@ -40,5 +40,5 @@
 
 -(void) ConnectToSFS: (NSString*) UserID;
 -(void) ConnectToFB;
-
+-(void)login:(NSString *)loginName;
 @end

@@ -23,24 +23,12 @@
 @synthesize viewController;
 /////
 -(void)fakeTimer{
-/*    INFSmartFoxRoom *room = [mClient getActiveRoom];
-	
-	if (room == nil) {
-		NSLog(@"BOOOOOS BU ODAAAA");
-	}
-   // [mClient setActiveRoomId:<#(NSInteger)#>]
-    
-   // [[[UIApplication sharedApplication] delegate] sendPublicMessage:@"ALIII"];
-    [mClient sendPublicMessage:@"Ben geldim" roomId:9];
- NSLog(@"ACTIVE ODANIN ISMI %@",[[[[[mClient getActiveRoom] getUserList] allValues] objectAtIndex:0] getName] )   ;
-  */
-    [self login:@"HOST"];
+
 }
 
 - (void)onPublicMessage:(INFSmartFoxSFSEvent *)evt
 {
-   // NSLog(@"LAAAAAAN %@",[[evt.params objectForKey:@"sender"] getName]);
-   //NSLog(@"HOOOOOOOP %@",[evt.params objectForKey:@"message"]);
+  
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -48,14 +36,11 @@
     ConnectedSFS = false;
 
     self.window.rootViewController = self.viewController;
-    /////
+
    	//[NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(fakeTimer) userInfo:nil repeats:YES];
     self.viewController = [[EG_TDViewController alloc] initWithNibName:@"EG_TDViewController" bundle:nil];
     [self.window.rootViewController presentModalViewController:self.viewController animated:YES];
 
-   // [self.window.rootViewController presentModalViewController:self.viewController animated:YES];
-    //Smartfox init.
-  //  [self ConnectToSFS:@"5"];
 
     return YES;
 }
@@ -165,7 +150,7 @@
 
 -(void)login:(NSString *)loginName {
     
-    NSLog(@"TTTT");
+    NSLog(@"loginName %@",loginName   );
 	[mClient login:@"ballrace" name:loginName pass:@""];
 	
 	INFSmartFoxRoom *room;
@@ -182,7 +167,7 @@
 {
     
     self->mUserID = [[NSString stringWithFormat:@"u%s", [UserId UTF8String]] retain]; 
-
+   // NSLog(@"USER %@",self->mUserID);
     if(ConnectedSFS == false)
     {
       
@@ -203,8 +188,9 @@
 		//view.connectLabel.text = @"Connected, please login";
 		//view.loginButton.enabled = YES;
 		//view.loginTextField.enabled = YES;
+      //  [[evt params] objectForKey:]
         NSLog(@" CONNECTION SUCCESS");
-        [self login:@"GURCAN"];
+        [self login:self->mUserID];
 	}
 	else {				
         

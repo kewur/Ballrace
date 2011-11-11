@@ -49,6 +49,8 @@
     
     float collideCube;
     
+    float readyCheck;
+    
   
 }
 
@@ -67,6 +69,7 @@
 @property (nonatomic, assign)CGPoint _location;
 @property (nonatomic, assign)float collideCube;
 - (CGPoint) unProject: (CGPoint) point;
+@property (nonatomic, assign)float readyCheck;
 
 - (void)updateAccelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration;
 

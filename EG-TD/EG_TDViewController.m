@@ -45,7 +45,7 @@
     // SFS CONNECTION BASLA
     [(EG_TDAppDelegate*)[[UIApplication sharedApplication] delegate] ConnectToSFS:@"Osman"];
     
-    
+ 
    accel = [UIAccelerometer sharedAccelerometer];
     accel.delegate = self;
     accel.updateInterval = 1.0f/30.0f;
