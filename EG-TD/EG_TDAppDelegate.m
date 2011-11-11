@@ -166,7 +166,7 @@
 -(void)login:(NSString *)loginName {
     
     NSLog(@"TTTT");
-	[mClient login:@"egtd" name:loginName pass:@""];
+	[mClient login:@"ballrace" name:loginName pass:@""];
 	
 	INFSmartFoxRoom *room;
 	for (id roomId in [mClient getAllRooms]) {
