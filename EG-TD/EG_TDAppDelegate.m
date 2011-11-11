@@ -110,9 +110,15 @@
 
 -(void) onObjectReceived:(INFSmartFoxSFSEvent *)evt
 {
-    
-    NSLog(@"Object received");
-    
+    if([evt.params objectForKey:@"_cmd"] == @"start")
+    {
+        NSLog(@"SERVERDAN OYUNA BASLA KOMUTU GELDI");
+       
+        
+        [mClient sendXtMessage:@"ballGame" cmd:@"started" paramObj:nil type:nil roomId:[mRoom getId]];
+        
+       
+    }
     
     
     
@@ -124,37 +130,38 @@
     
     //[self->_viewController RoomVariableAction:[self->mRoom getVariables]];
     
-    
+    [mClient sendXtMessage:@"ballGame" cmd:@"ready" paramObj:nil type:nil roomId:[mRoom getId]];
     
 }
 
 
-- (void)applicationWillResignActive:(UIApplication *)application
-{
-    /*
-     Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-     Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-     */
-   // [self.viewController stopAnimation];
-}
 
 -(void) onLogin:(INFSmartFoxSFSEvent *)evt
 {
       
     if ([[evt.params objectForKey:@"success"] boolValue])
     {
-       // NSLog(@"AAAA");
+      
     }
     else
     {
-      //  NSLog(@" FAILL to LOG IN");
+      
     }
+    
     
     
 }
 
 
+-(void) onRoomListUpdate:(INFSmartFoxSFSEvent *)evt
+{
+    NSArray* roomList = [[evt.params objectForKey:@"roomList"] allValues];
 
+    self->mRoom = [roomList objectAtIndex:0];
+    [mClient joinRoom:[self->mRoom getName] pword:@"" isSpectator:NO dontLeave:NO oldRoom:NO];
+    
+    
+}
 
 -(void)login:(NSString *)loginName {
     
@@ -185,11 +192,40 @@
         
         [mClient loadConfig:@"config" autoConnect:YES]; 
     }
-    
-
-    
        
 }
+
+- (void)onConnection:(INFSmartFoxSFSEvent *)evt {
+    
+    
+	//Enable the login button and the textfield
+	if ([[evt.params objectForKey:@"success"] boolValue]) {
+		//view.connectLabel.text = @"Connected, please login";
+		//view.loginButton.enabled = YES;
+		//view.loginTextField.enabled = YES;
+        NSLog(@" CONNECTION SUCCESS");
+        [self login:@"GURCAN"];
+	}
+	else {				
+        
+        [mClient loadConfig:@"config" autoConnect:YES];
+        //  [mClient login:@"simpleChat" name:loginName pass:@""];
+		//view.connectLabel.text = [NSString stringWithFormat:@"Connection error: %@", [evt.params objectForKey:@"error"]];
+	}
+}
+
+- (void)onConnectionLost:(INFSmartFoxSFSEvent *)evt
+{
+	NSLog(@"onConnectionLost");
+	
+    //Disable textfield and button until connected!
+	//view.loginTextField.enabled = NO;
+	//view.loginButton.enabled = NO;	
+    ConnectedSFS = false;
+    //Retry connection
+	[mClient loadConfig:@"config" autoConnect:YES];
+}
+
 
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -232,36 +268,16 @@
     [super dealloc];
 }
 
-- (void)onConnection:(INFSmartFoxSFSEvent *)evt {
-    
-
-	//Enable the login button and the textfield
-	if ([[evt.params objectForKey:@"success"] boolValue]) {
-		//view.connectLabel.text = @"Connected, please login";
-		//view.loginButton.enabled = YES;
-		//view.loginTextField.enabled = YES;
-          NSLog(@" CONNECTION SUCCESS");
-             [self login:@"GURCAN"];
-	}
-	else {				
-
-        [mClient loadConfig:@"config" autoConnect:YES];
-      //  [mClient login:@"simpleChat" name:loginName pass:@""];
-		//view.connectLabel.text = [NSString stringWithFormat:@"Connection error: %@", [evt.params objectForKey:@"error"]];
-	}
-}
-
-- (void)onConnectionLost:(INFSmartFoxSFSEvent *)evt
+- (void)applicationWillResignActive:(UIApplication *)application
 {
-	NSLog(@"onConnectionLost");
-	
-    //Disable textfield and button until connected!
-	//view.loginTextField.enabled = NO;
-	//view.loginButton.enabled = NO;	
-	  ConnectedSFS = false;
-    //Retry connection
-	[mClient loadConfig:@"config" autoConnect:YES];
+    /*
+     Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
+     Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+     */
+    // [self.viewController stopAnimation];
 }
+
+
 
 
 

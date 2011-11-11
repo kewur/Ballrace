@@ -16,6 +16,7 @@
 #import <OpenGLES/ES2/glext.h>
 #import "Director.h"
 #import "GameScene.h"
+#import "EG_TDAppDelegate.h"
 
 @interface EG_TDViewController : UIViewController<UIAccelerometerDelegate> {
 @private
