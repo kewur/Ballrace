@@ -70,7 +70,7 @@
 @property (nonatomic, assign)float collideCube;
 - (CGPoint) unProject: (CGPoint) point;
 @property (nonatomic, assign)float readyCheck;
-
+- (void)updateX:(NSString *)xPos updateY:(NSString *)yPos updateZ:(NSString *)zPos;
 - (void)updateAccelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration;
 - (void)startTheGame;
 - (void)serverUpdate;

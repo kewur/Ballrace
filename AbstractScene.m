@@ -42,6 +42,11 @@
     
    
 }
+- (void)updateX:(NSString *)xPos updateY:(NSString *)yPos updateZ:(NSString *)zPos
+{
+
+
+}
 - (void)serverUpdate
 {
 

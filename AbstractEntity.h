@@ -23,7 +23,7 @@ enum entityState {
 
 @interface AbstractEntity : NSObject {
     
-
+    EGVertex3D otherBall;
 	// Entity position
 	EGVertex3D position;
 	// Velocity
@@ -36,7 +36,7 @@ enum entityState {
     BOOL _gotScene;
     
 }
-
+@property (nonatomic, assign) EGVertex3D otherBall;
 @property (nonatomic, assign) EGColor color;
 @property (nonatomic, assign) EGVertex3D position;
 @property (nonatomic, assign) EGVertex3D velocity;

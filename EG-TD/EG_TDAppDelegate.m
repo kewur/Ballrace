@@ -161,8 +161,9 @@
     }
     else if([[[evt.params objectForKey:@"dataObj"] objectForKey:@"_cmd"] isEqualToString:@"upd"])
     {
-     //   NSLog(@"UPDATE %@",evt.params);
-    
+        
+        [[self.viewController._director currentScene] updateX:[[evt.params objectForKey:@"dataObj"] objectForKey:@"x"] updateY:[[evt.params objectForKey:@"dataObj"] objectForKey:@"y"] updateZ:[[evt.params objectForKey:@"dataObj"] objectForKey:@"z"]];
+            
     }
 
 }

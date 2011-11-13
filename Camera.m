@@ -42,6 +42,10 @@
         position.y = startLocation.y;
         position.z = startLocation.z;
         
+        
+        otherBall.x = startLocation.x;
+        otherBall.y = startLocation.y;
+        otherBall.z = startLocation.z;
         raceBall = [[RaceBall alloc] initWithTileLocation:Vector3fMake(0, 0, 0)];
         oldPosition = position.x;
         // Set up the spritesheets that will give us out player animation
@@ -134,7 +138,12 @@
   //[raceBall update:aDelta xPos:xDifference*1.1 yPos:position.y zPos:position.z oldPos:oldPosition];
  
 }
-
+- (void)updateX:(NSString *)xPos updateY:(NSString *)yPos updateZ:(NSString *)zPos
+{
+    otherBall.x = [xPos floatValue];
+    otherBall.y = [yPos floatValue];
+    otherBall.z = [zPos floatValue];
+}
 #pragma mark -
 #pragma mark Render
 
@@ -187,6 +196,31 @@
     glDisableClientState(GL_NORMAL_ARRAY);
     
     glPopMatrix();
+    
+    glPushMatrix();
+    //glLoadIdentity();
+    
+    
+    // glScalef(0.6, 0.2, 0.6);
+    glColor4f(0, 1, 0, 1);
+    // glTranslatef(-oldPosition.x, -1, -oldPosition.z);
+    //  NSLog(@"%f %f",position.x*1/0.55,position.z*1/0.6+20);
+    //  NSLog(@"GAME X %f GAME Z %f",position.x,position.z);
+    glTranslatef(otherBall.x, 0, otherBall.z);
+    glScalef(0.6, 0.6, 0.6);
+    // glTranslatef(position.x, 0, position.z+20);
+    //  glP
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glEnableClientState(GL_NORMAL_ARRAY);
+    glVertexPointer(3, GL_FLOAT, sizeof(vertexData), &MeshVertexData[0].vertex);
+    glNormalPointer(GL_FLOAT, sizeof(vertexData), &MeshVertexData[0].normal);
+    glDrawArrays(GL_TRIANGLES, 0, 2880);
+    glDisableClientState(GL_VERTEX_ARRAY);
+    glDisableClientState(GL_NORMAL_ARRAY);
+    
+    glPopMatrix();
+    
+    
     
 }
 

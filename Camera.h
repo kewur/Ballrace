@@ -34,6 +34,7 @@
     
     RaceBall *raceBall;
     
+    
 }
 @property (nonatomic, readonly)RaceBall *raceBall;
 @property (nonatomic, assign)float oldPosition;
@@ -46,6 +47,7 @@
 @property (nonatomic, readonly) float xDifference;
 @property (nonatomic, readonly) float yDifference;
 - (id)initWithTileLocation:(EGVertex3D)startLocation;
+- (void)updateX:(NSString *)xPos updateY:(NSString *)yPos updateZ:(NSString *)zPos;
 
 
 @end

@@ -16,12 +16,14 @@
 @synthesize velocity;
 @synthesize entityState;
 @synthesize color;
+@synthesize otherBall;
 - (id)init {
 	self = [super init];
 	if (self != nil) {
 		position =  Vector3fMake(0, 0, 0);
 		velocity = Vector3fMake(0, 0, 0);
 		entityState = kEntity_Idle;
+        otherBall = Vector3fMake(0, 0, 0);
         _gotScene = NO;
 	}
 	return self;

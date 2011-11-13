@@ -38,7 +38,7 @@
         _sharedResourceManager = [ResourceManager sharedResourceManager];
         gameMap = [[Map3D alloc] initMap3D];
         towerMenu = [[TowerMenu alloc] init];
-     	[NSTimer scheduledTimerWithTimeInterval:0.016 target:self selector:@selector(gameUpdate) userInfo:nil repeats:YES];
+     	[NSTimer scheduledTimerWithTimeInterval:0.15 target:self selector:@selector(gameUpdate) userInfo:nil repeats:YES];
         
         //NORMAL CAMERA GAME COORDINATE SYSTEM
      //   cube = [[Cube alloc] initWithPosition:Vector3fMake(0, 0, 0)];
@@ -274,10 +274,22 @@
     if (readyCheck == 1 )
     {
        
-      //  NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"20",@"x",@"20",@"y",@"20",@"z", nil];
-     //   [[(EG_TDAppDelegate*)[[UIApplication sharedApplication] delegate] mClient] sendXtMessage:@"bb" cmd:@"upd" paramObj:dic type:@"xml" roomId:41];
+        //GLfloat temp = ;
+        GLfloat x = [gameCamera position].x*0.6/0.55;
+        GLfloat y = [gameCamera position].y;
+        GLfloat z = [gameCamera position].z+20;
+        NSString *zVal = [NSString stringWithFormat:@"%f",z];
+         NSString *yVal = [NSString stringWithFormat:@"%f",y];
+         NSString *xVal = [NSString stringWithFormat:@"%f",x];
+        NSLog(@"zValzValzVal%f",z);
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:xVal,@"x",yVal,@"y",zVal,@"z", nil];
+        [[(EG_TDAppDelegate*)[[UIApplication sharedApplication] delegate] mClient] sendXtMessage:@"bb" cmd:@"upd" paramObj:dic type:@"xml" roomId:41];
         
     }
+}
+- (void)updateX:(NSString *)xPos updateY:(NSString *)yPos updateZ:(NSString *)zPos
+{
+    [gameCamera updateX:xPos updateY:yPos updateZ:zPos];
 }
 - (void)startTheGame
 {

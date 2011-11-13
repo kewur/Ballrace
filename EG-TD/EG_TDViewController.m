@@ -44,7 +44,7 @@
 {
     
     // SFS CONNECTION BASLA
-    [(EG_TDAppDelegate*)[[UIApplication sharedApplication] delegate] ConnectToSFS:@"GG"];
+    [(EG_TDAppDelegate*)[[UIApplication sharedApplication] delegate] ConnectToSFS:@"Efe"];
     
  
    accel = [UIAccelerometer sharedAccelerometer];

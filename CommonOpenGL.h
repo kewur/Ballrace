@@ -33,7 +33,7 @@
 #pragma mark Enumerations
 
 #define MAX_CUBES 65
-#define MAX_Acceleration 1.7
+#define MAX_Acceleration 0.3
 
 enum {
 	kControlType_NewGame,
