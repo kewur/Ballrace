@@ -126,7 +126,7 @@
     
     NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:@"10",@"x",@"23",@"y",@"11",@"z", nil];
 
-    [mClient sendXtMessage:@"bb" cmd:@"ready" paramObj:dic type:@"xml" roomId:[mRoom getId]];
+    [mClient sendXtMessage:@"ballrace" cmd:@"ready" paramObj:dic type:@"xml" roomId:[mRoom getId]];
     
 }
 
@@ -156,7 +156,7 @@
       //  
          NSLog(@"SERVERDAN OYUNA BASLA KOMUTU GELDI");
         [[NSNotificationCenter defaultCenter] postNotificationName:@"startTheGame" object:self];
-        [mClient sendXtMessage:@"bb" cmd:@"started" paramObj:nil type:@"str" roomId:[mRoom getId]];
+        [mClient sendXtMessage:@"ballrace" cmd:@"started" paramObj:nil type:@"str" roomId:[mRoom getId]];
         GameStarted = YES;
     }
     else if([[[evt.params objectForKey:@"dataObj"] objectForKey:@"_cmd"] isEqualToString:@"upd"])
@@ -184,7 +184,7 @@
 -(void)login:(NSString *)loginName {
     
     //NSLog(@"loginName %@",loginName   );
-	[mClient login:@"top" name:loginName pass:@""];
+	[mClient login:@"ballrace" name:loginName pass:@""];
 	
 	INFSmartFoxRoom *room;
 	for (id roomId in [mClient getAllRooms]) {

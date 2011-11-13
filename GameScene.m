@@ -38,7 +38,7 @@
         _sharedResourceManager = [ResourceManager sharedResourceManager];
         gameMap = [[Map3D alloc] initMap3D];
         towerMenu = [[TowerMenu alloc] init];
-     	[NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(gameUpdate) userInfo:nil repeats:YES];
+     	[NSTimer scheduledTimerWithTimeInterval:0.15 target:self selector:@selector(gameUpdate) userInfo:nil repeats:YES];
         
         //NORMAL CAMERA GAME COORDINATE SYSTEM
      //   cube = [[Cube alloc] initWithPosition:Vector3fMake(0, 0, 0)];
@@ -275,7 +275,7 @@
     {
        
         NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"20",@"x",@"20",@"y",@"20",@"z", nil];
-        [[(EG_TDAppDelegate*)[[UIApplication sharedApplication] delegate] mClient] sendXtMessage:@"bb" cmd:@"upd" paramObj:dic type:@"xml" roomId:41];
+        [[(EG_TDAppDelegate*)[[UIApplication sharedApplication] delegate] mClient] sendXtMessage:@"ballrace" cmd:@"upd" paramObj:dic type:@"xml" roomId:41];
         
     }
 }
