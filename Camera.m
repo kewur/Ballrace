@@ -10,6 +10,7 @@
 #import "GameScene.h"
 #import "ball.h"
 #import "RaceBall.h"
+#import "EG_TDAppDelegate.h"
 @implementation Camera
 
 @synthesize collideCube;
@@ -79,6 +80,7 @@
     
     if (readyCheck != 0)
     {
+       
         static float velocityOfBall = 0;
         
         if (collideCube == 0)
@@ -115,6 +117,13 @@
         oldPosition = position.x;
         position.x += xDifference*1.5;
         lookUpX += xDifference*1.5;
+        
+        
+       // GLfloat x = position.x*0.6/0.55;
+       // NSString * x = [NSString stringWithFormat:@"%f",position.x*0.6/0.55];
+       // NSString * y = [NSString stringWithFormat:@"%f",position.y];
+       // NSString * z = [NSString stringWithFormat:@"%f",position.z+20];
+
         
     }
 

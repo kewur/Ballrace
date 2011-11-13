@@ -12,6 +12,7 @@
 #import "Cube.h"
 #import "map.h"
 #import "RaceBall.h"
+#import "EG_TDAppDelegate.h"
 @implementation GameScene
 
 @synthesize gameMap;
@@ -37,7 +38,7 @@
         _sharedResourceManager = [ResourceManager sharedResourceManager];
         gameMap = [[Map3D alloc] initMap3D];
         towerMenu = [[TowerMenu alloc] init];
-     
+     	[NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(gameUpdate) userInfo:nil repeats:YES];
         
         //NORMAL CAMERA GAME COORDINATE SYSTEM
      //   cube = [[Cube alloc] initWithPosition:Vector3fMake(0, 0, 0)];
@@ -268,6 +269,16 @@
 	
 	return self;
 }
+- (void)gameUpdate
+{
+    if (readyCheck == 1 )
+    {
+       
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"20",@"x",@"20",@"y",@"20",@"z", nil];
+        [[(EG_TDAppDelegate*)[[UIApplication sharedApplication] delegate] mClient] sendXtMessage:@"bb" cmd:@"upd" paramObj:dic type:@"xml" roomId:41];
+        
+    }
+}
 - (void)startTheGame
 {
 
@@ -293,7 +304,12 @@
  
     xDifference = acceleration.y*0.3;
 }
+- (void)serverUpdate
+{
 
+
+
+}
 #pragma mark -
 #pragma mark Update scene logic
 

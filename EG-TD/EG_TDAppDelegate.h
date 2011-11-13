@@ -27,6 +27,7 @@
     INFSmartFoxRoom *mRoom;
     NSString* mUserID;
     Facebook* facebook;
+    bool GameStarted;
 
 }
 
@@ -35,10 +36,11 @@
 @property (nonatomic, retain) IBOutlet EG_TDViewController *viewController;
 @property (nonatomic, retain) IBOutlet MenuViewController *menuViewController; 
 
-//@property (nonatomic, retain) INFSmartFoxiPhoneClient *mClient;
+@property (nonatomic, retain) INFSmartFoxiPhoneClient *mClient;
 @property (nonatomic, retain) Facebook *facebook;
 
 -(void) ConnectToSFS: (NSString*) UserID;
 -(void) ConnectToFB;
 -(void)login:(NSString *)loginName;
+
 @end

@@ -73,4 +73,6 @@
 
 - (void)updateAccelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration;
 - (void)startTheGame;
+- (void)serverUpdate;
+- (void)gameUpdate;
 @end

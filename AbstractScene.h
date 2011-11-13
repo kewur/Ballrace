@@ -60,4 +60,6 @@
 // Selector which renders the scene
 - (void)render;
 
+- (void)serverUpdate;
+
 @end

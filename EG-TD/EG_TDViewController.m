@@ -38,12 +38,13 @@
 
 @synthesize animating, context, displayLink;
 @synthesize accel;
+@synthesize _director;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     
     // SFS CONNECTION BASLA
-    [(EG_TDAppDelegate*)[[UIApplication sharedApplication] delegate] ConnectToSFS:@"Osman"];
+    [(EG_TDAppDelegate*)[[UIApplication sharedApplication] delegate] ConnectToSFS:@"Gurcan"];
     
  
    accel = [UIAccelerometer sharedAccelerometer];

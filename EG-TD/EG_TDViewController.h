@@ -46,6 +46,7 @@
 @property (nonatomic,retain)UIAccelerometer *accel; 
 @property (readonly, nonatomic, getter=isAnimating) BOOL animating;
 @property (nonatomic) NSInteger animationFrameInterval;
+@property (nonatomic,retain)Director *_director;
 
 - (void)startAnimation;
 - (void)stopAnimation;

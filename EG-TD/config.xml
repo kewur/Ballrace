@@ -1,6 +1,6 @@
 <SmartFoxTrisConfig>
     
-    <ip>178.79.129.10</ip>
+    <ip>192.168.2.226</ip>
     
     <port>9339</port>
     
@@ -14,6 +14,6 @@
     
     <httpPollSpeed>750</httpPollSpeed>
     
-    <zone>ballrace</zone>
+    <zone>top</zone>
     
 </SmartFoxTrisConfig>

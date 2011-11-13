@@ -11,7 +11,7 @@
 #import "EAGLView.h"
 
 #import "EG_TDViewController.h"
-
+#import "SBJsonWriter.h"
 @implementation EG_TDAppDelegate
 
 
@@ -19,34 +19,39 @@
 @synthesize menuViewController;
 
 @synthesize facebook;
-//@synthesize mClient;
+@synthesize mClient;
 @synthesize viewController;
 /////
 -(void)fakeTimer{
 
 }
 
-- (void)onPublicMessage:(INFSmartFoxSFSEvent *)evt
-{
-  
-}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+
     // Override point for customization after application launch.
     ConnectedSFS = false;
+    GameStarted = false;
 
     self.window.rootViewController = self.viewController;
 
-   	//[NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(fakeTimer) userInfo:nil repeats:YES];
+   	//[NSTimer scheduledTimerWithTimeInterval:0.016 target:self selector:@selector(GameUpdate) userInfo:nil repeats:YES];
     self.viewController = [[EG_TDViewController alloc] initWithNibName:@"EG_TDViewController" bundle:nil];
     [self.window.rootViewController presentModalViewController:self.viewController animated:YES];
 
 
     return YES;
 }
+-(void)GameUpdate
+{
+    
+
+}
 - (void)onUserEnterRoom:(INFSmartFoxSFSEvent *)evt
 {
    // NSLog(@"BIRISI GIRDI");
+   
 }
 -(void) ConnectToFB
 {
@@ -95,27 +100,33 @@
 
 -(void) onObjectReceived:(INFSmartFoxSFSEvent *)evt
 {
+   
     if([evt.params objectForKey:@"_cmd"] == @"start")
     {
-        NSLog(@"SERVERDAN OYUNA BASLA KOMUTU GELDI");
-       
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"startTheGame" object:self];
-        [mClient sendXtMessage:@"ballGame" cmd:@"started" paramObj:nil type:nil roomId:[mRoom getId]];
+
         
-       
     }
     
     
     
 }
+- (void)handleMessage:(id)msgObj type:(NSString *)type delegate:(id <INFSmartFoxISFSEvents>)delegate
+{
 
+}
+- (void)onPublicMessage:(INFSmartFoxSFSEvent *)evt
+{
+  
+
+}
 
 -(void) onJoinRoom:(INFSmartFoxSFSEvent *)evt
 {
+
     
-    //[self->_viewController RoomVariableAction:[self->mRoom getVariables]];
-   
-    [mClient sendXtMessage:@"ballGame" cmd:@"ready" paramObj:nil type:nil roomId:[mRoom getId]];
+    NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:@"10",@"x",@"23",@"y",@"11",@"z", nil];
+
+    [mClient sendXtMessage:@"bb" cmd:@"ready" paramObj:dic type:@"xml" roomId:[mRoom getId]];
     
 }
 
@@ -137,7 +148,29 @@
     
 }
 
+-(void) onExtensionResponse:(INFSmartFoxSFSEvent *)evt
+{
+    NSLog(@"EXTENSION RESPONSE");
+    if ([[[evt.params objectForKey:@"dataObj"] objectForKey:@"_cmd"] isEqualToString:@"start"])
+    {
+      //  
+         NSLog(@"SERVERDAN OYUNA BASLA KOMUTU GELDI");
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"startTheGame" object:self];
+        [mClient sendXtMessage:@"bb" cmd:@"started" paramObj:nil type:@"str" roomId:[mRoom getId]];
+        GameStarted = YES;
+    }
+    else if([[[evt.params objectForKey:@"dataObj"] objectForKey:@"_cmd"] isEqualToString:@"upd"])
+    {
+     //   NSLog(@"UPDATE %@",evt.params);
+    
+    }
 
+}
+ -(void)strReceived:(NSString *)msg
+{
+   
+
+}
 -(void) onRoomListUpdate:(INFSmartFoxSFSEvent *)evt
 {
     NSArray* roomList = [[evt.params objectForKey:@"roomList"] allValues];
@@ -150,13 +183,13 @@
 
 -(void)login:(NSString *)loginName {
     
-    NSLog(@"loginName %@",loginName   );
-	[mClient login:@"ballrace" name:loginName pass:@""];
+    //NSLog(@"loginName %@",loginName   );
+	[mClient login:@"top" name:loginName pass:@""];
 	
 	INFSmartFoxRoom *room;
 	for (id roomId in [mClient getAllRooms]) {
 		room = [[mClient getAllRooms] objectForKey:roomId];
-		NSLog(@"Room name is: %@",[room getName]);
+		//NSLog(@"Room name is: %@",[room getName]);
 	}
     
 }
@@ -182,7 +215,7 @@
 
 - (void)onConnection:(INFSmartFoxSFSEvent *)evt {
     
-    
+   // NSLog(@"OLDUMU");
 	//Enable the login button and the textfield
 	if ([[evt.params objectForKey:@"success"] boolValue]) {
 		//view.connectLabel.text = @"Connected, please login";
@@ -193,7 +226,7 @@
         [self login:self->mUserID];
 	}
 	else {				
-        
+        //NSLog(@"OLMADI");
         [mClient loadConfig:@"config" autoConnect:YES];
         //  [mClient login:@"simpleChat" name:loginName pass:@""];
 		//view.connectLabel.text = [NSString stringWithFormat:@"Connection error: %@", [evt.params objectForKey:@"error"]];
