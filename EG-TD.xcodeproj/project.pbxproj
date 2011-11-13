@@ -549,7 +549,6 @@
 			children = (
 				3BA212F21422F403003CF839 /* EG_TDAppDelegate.h */,
 				3BA212F31422F403003CF839 /* EG_TDAppDelegate.m */,
-				3BA212F51422F403003CF839 /* MainWindow.xib */,
 				3BA212FC1422F403003CF839 /* EAGLView.h */,
 				3BA212FD1422F403003CF839 /* EAGLView.m */,
 				3BA212FF1422F403003CF839 /* EG_TDViewController.h */,
@@ -558,6 +557,7 @@
 				3BB70BDA143FA75900E51BD0 /* MenuViewController.m */,
 				3BB70BDB143FA75900E51BD0 /* MenuViewController.xib */,
 				3BA213021422F403003CF839 /* EG_TDViewController.xib */,
+				3BA212F51422F403003CF839 /* MainWindow.xib */,
 				2E191DDA146B14AC000E61F3 /* libxml2.dylib */,
 				3BA212EA1422F403003CF839 /* Supporting Files */,
 			);

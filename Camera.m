@@ -80,7 +80,8 @@
     
     if (readyCheck != 0)
     {
-       
+     //   NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"20",@"x",@"20",@"y",@"20",@"z", nil];
+     //   [[(EG_TDAppDelegate*)[[UIApplication sharedApplication] delegate] mClient] sendXtMessage:@"bb" cmd:@"upd" paramObj:dic type:@"xml" roomId:41];
         static float velocityOfBall = 0;
         
         if (collideCube == 0)
