@@ -151,6 +151,16 @@
 -(void) onExtensionResponse:(INFSmartFoxSFSEvent *)evt
 {
     NSLog(@"EXTENSION RESPONSE");
+    
+    if([[evt.params objectForKey:@"type"] isEqualToString:@"str"])
+    {
+        NSArray* vars = [evt.params objectForKey:@"dataObj"];
+        //NSLog([vars objectAtIndex:0]);
+        [[self.viewController._director currentScene] updateX:[vars objectAtIndex:1] updateY:[vars objectAtIndex:2] updateZ:[vars objectAtIndex:3]];
+    }
+    
+    else
+    {
     if ([[[evt.params objectForKey:@"dataObj"] objectForKey:@"_cmd"] isEqualToString:@"start"])
     {
       //  
@@ -162,10 +172,11 @@
     else if([[[evt.params objectForKey:@"dataObj"] objectForKey:@"_cmd"] isEqualToString:@"upd"])
     {
         
-        [[self.viewController._director currentScene] updateX:[[evt.params objectForKey:@"dataObj"] objectForKey:@"x"] updateY:[[evt.params objectForKey:@"dataObj"] objectForKey:@"y"] updateZ:[[evt.params objectForKey:@"dataObj"] objectForKey:@"z"]];
+        NSLog(@"STRING OLARAK");
+       // [[self.viewController._director currentScene] updateX:[[evt.params objectForKey:@"dataObj"] objectForKey:@"x"] updateY:[[evt.params objectForKey:@"dataObj"] objectForKey:@"y"] updateZ:[[evt.params objectForKey:@"dataObj"] objectForKey:@"z"]];
             
     }
-
+    }
 }
  -(void)strReceived:(NSString *)msg
 {

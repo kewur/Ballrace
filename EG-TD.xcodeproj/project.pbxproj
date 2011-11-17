@@ -1101,7 +1101,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Gurcan Yavuz (7GFJUKQ8SJ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Efe Burak (XQ54ECN2NQ)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1116,7 +1116,7 @@
 					"-lxml2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "929266D0-C1EA-484C-A55C-0BC3077169B0";
+				PROVISIONING_PROFILE = "FE678BD0-075D-454E-84F8-9E31F99F9B90";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1125,7 +1125,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Gurcan Yavuz (7GFJUKQ8SJ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Efe Burak (XQ54ECN2NQ)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1139,7 +1139,7 @@
 					"-lxml2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "929266D0-C1EA-484C-A55C-0BC3077169B0";
+				PROVISIONING_PROFILE = "FE678BD0-075D-454E-84F8-9E31F99F9B90";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
