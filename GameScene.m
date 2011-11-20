@@ -281,19 +281,24 @@
         NSString *zVal = [NSString stringWithFormat:@"%f",z];
          NSString *yVal = [NSString stringWithFormat:@"%f",y];
          NSString *xVal = [NSString stringWithFormat:@"%f",x];
-        NSLog(@"zValzValzVal%f",z);
+        
+        GameNowTime = [NSDate date];
+        
+        mTimeStamp = [NSString stringWithFormat:@"%lf",[GameNowTime timeIntervalSinceDate:GameStartTime]];
+        
         NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:xVal,@"x",yVal,@"y",zVal,@"z", nil];
         [[(EG_TDAppDelegate*)[[UIApplication sharedApplication] delegate] mClient] sendXtMessage:@"bb" cmd:@"upd" paramObj:dic type:@"str" roomId:10];
         
     }
 }
-- (void)updateX:(NSString *)xPos updateY:(NSString *)yPos updateZ:(NSString *)zPos
+- (void)updateX:(NSString *)xPos updateY:(NSString *)yPos updateZ:(NSString *)zPos TimeStamp:(NSString*)mStamp
 {
-    [gameCamera updateX:xPos updateY:yPos updateZ:zPos];
+    [gameCamera updateX:xPos updateY:yPos updateZ:zPos TimeStamp:mStamp];
 }
 - (void)startTheGame
 {
-
+    GameStartTime = [NSDate date];
+    
     readyCheck = 1;
 
 }

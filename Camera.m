@@ -138,12 +138,27 @@
   //[raceBall update:aDelta xPos:xDifference*1.1 yPos:position.y zPos:position.z oldPos:oldPosition];
  
 }
-- (void)updateX:(NSString *)xPos updateY:(NSString *)yPos updateZ:(NSString *)zPos
+- (void)updateX:(NSString *)xPos updateY:(NSString *)yPos updateZ:(NSString *)zPos TimeStamp:(NSString*)mStamp
 {
+    otherBallOldPos = otherBall;
+    
     otherBall.x = [xPos floatValue];
     otherBall.y = [yPos floatValue];
     otherBall.z = [zPos floatValue];
+    
+    oldPackageTime = LastPackageTime;
+    LastPackageTime = [mStamp doubleValue];
 }
+
+- (EGVertex3D) DeadReckoning
+{
+    EGVertex3D framePos;
+    
+    //dead reckoning code here
+    
+    return framePos;
+}
+
 #pragma mark -
 #pragma mark Render
 

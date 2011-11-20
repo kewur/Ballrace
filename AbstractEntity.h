@@ -24,6 +24,7 @@ enum entityState {
 @interface AbstractEntity : NSObject {
     
     EGVertex3D otherBall;
+    EGVertex3D otherBallOldPos;
 	// Entity position
 	EGVertex3D position;
 	// Velocity

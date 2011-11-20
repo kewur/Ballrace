@@ -156,7 +156,7 @@
     {
         NSArray* vars = [evt.params objectForKey:@"dataObj"];
         //NSLog([vars objectAtIndex:0]);
-        [[self.viewController._director currentScene] updateX:[vars objectAtIndex:1] updateY:[vars objectAtIndex:2] updateZ:[vars objectAtIndex:3]];
+        [[self.viewController._director currentScene] updateX:[vars objectAtIndex:1] updateY:[vars objectAtIndex:2] updateZ:[vars objectAtIndex:3] TimeStamp:[vars objectAtIndex:4]];
     }
     
     else
