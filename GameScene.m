@@ -38,7 +38,7 @@
         _sharedResourceManager = [ResourceManager sharedResourceManager];
         gameMap = [[Map3D alloc] initMap3D];
         towerMenu = [[TowerMenu alloc] init];
-     	[NSTimer scheduledTimerWithTimeInterval:0.30 target:self selector:@selector(gameUpdate) userInfo:nil repeats:YES];
+     	[NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(gameUpdate) userInfo:nil repeats:YES];
         
         //NORMAL CAMERA GAME COORDINATE SYSTEM
      //   cube = [[Cube alloc] initWithPosition:Vector3fMake(0, 0, 0)];
@@ -281,24 +281,19 @@
         NSString *zVal = [NSString stringWithFormat:@"%f",z];
          NSString *yVal = [NSString stringWithFormat:@"%f",y];
          NSString *xVal = [NSString stringWithFormat:@"%f",x];
-        
-        GameNowTime = [NSDate date];
-        
-        mTimeStamp = [NSString stringWithFormat:@"%lf",[GameNowTime timeIntervalSinceDate:GameStartTime]];
-        
+        NSLog(@"zValzValzVal%f",z);
         NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:xVal,@"x",yVal,@"y",zVal,@"z", nil];
         [[(EG_TDAppDelegate*)[[UIApplication sharedApplication] delegate] mClient] sendXtMessage:@"bb" cmd:@"upd" paramObj:dic type:@"str" roomId:10];
         
     }
 }
-- (void)updateX:(NSString *)xPos updateY:(NSString *)yPos updateZ:(NSString *)zPos TimeStamp:(NSString*)mStamp
+- (void)updateX:(NSString *)xPos updateY:(NSString *)yPos updateZ:(NSString *)zPos
 {
-    [gameCamera updateX:xPos updateY:yPos updateZ:zPos TimeStamp:mStamp];
+    [gameCamera updateX:xPos updateY:yPos updateZ:zPos];
 }
 - (void)startTheGame
 {
-    GameStartTime = [NSDate date];
-    
+
     readyCheck = 1;
 
 }

@@ -34,12 +34,7 @@
     float miniTowerTouched;
     CGRect miniTower;
     int miniTowerHash;
-    
-    NSDate* GameStartTime;
-    NSDate* GameNowTime;
-    
-    NSString* mTimeStamp;
-    
+
     CGPoint _location;
     
     //Acceleration
@@ -75,7 +70,7 @@
 @property (nonatomic, assign)float collideCube;
 - (CGPoint) unProject: (CGPoint) point;
 @property (nonatomic, assign)float readyCheck;
-- (void)updateX:(NSString *)xPos updateY:(NSString *)yPos updateZ:(NSString *)zPos TimeStamp:(NSString*)mStamp;
+- (void)updateX:(NSString *)xPos updateY:(NSString *)yPos updateZ:(NSString *)zPos;
 - (void)updateAccelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration;
 - (void)startTheGame;
 - (void)serverUpdate;

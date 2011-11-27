@@ -27,9 +27,6 @@
     float xDifference;
     float yDifference;
     
-    double LastPackageTime;
-    double oldPackageTime;
-    
     float _cameraSpeed;
     GameScene *_scene;
     
@@ -50,7 +47,7 @@
 @property (nonatomic, readonly) float xDifference;
 @property (nonatomic, readonly) float yDifference;
 - (id)initWithTileLocation:(EGVertex3D)startLocation;
-- (void)updateX:(NSString *)xPos updateY:(NSString *)yPos updateZ:(NSString *)zPos TimeStamp:(NSString*)mStamp;
-- (EGVertex3D) DeadReckoning;
+- (void)updateX:(NSString *)xPos updateY:(NSString *)yPos updateZ:(NSString *)zPos;
+
 
 @end
