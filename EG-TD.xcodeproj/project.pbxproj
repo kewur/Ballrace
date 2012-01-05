@@ -854,6 +854,9 @@
 /* Begin PBXProject section */
 		3BA212D21422F402003CF839 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = 3BA212D51422F402003CF839 /* Build configuration list for PBXProject "EG-TD" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -1108,6 +1111,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EG-TD/EG-TD-Prefix.pch";
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "$(SDK_DIR)\"/usr/include/libxml2/**";
 				INFOPLIST_FILE = "EG-TD/EG-TD-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
@@ -1116,7 +1120,7 @@
 					"-lxml2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "FE678BD0-075D-454E-84F8-9E31F99F9B90";
+				PROVISIONING_PROFILE = "17834280-AFAC-4725-9A82-B84ECA9FC719";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1131,6 +1135,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EG-TD/EG-TD-Prefix.pch";
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "$(SDK_DIR)\"/usr/include/libxml2/**";
 				INFOPLIST_FILE = "EG-TD/EG-TD-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
@@ -1139,7 +1144,7 @@
 					"-lxml2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "FE678BD0-075D-454E-84F8-9E31F99F9B90";
+				PROVISIONING_PROFILE = "17834280-AFAC-4725-9A82-B84ECA9FC719";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1156,6 +1161,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EG-TDTests/EG-TDTests-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "EG-TDTests/EG-TDTests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -1178,6 +1184,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EG-TDTests/EG-TDTests-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "EG-TDTests/EG-TDTests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-framework",
